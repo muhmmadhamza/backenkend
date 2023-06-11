@@ -4,21 +4,21 @@ const db = require("../models");
 const User = db.user;
 
 verifyToken = (req, res, next) => {
-  let token = req.headers["Authorization"];
-
+  let token = req.headers["authorization"];
+  console.log('req.headers',req.headers);
   if (!token) {
     return res.status(403).send({
       message: "No token provided!"
     });
   }
 
-  jwt.verify(token, config.auth.secret, (err, decoded) => {
+  jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
     if (err) {
       return res.status(401).send({
         message: "Unauthorized!"
       });
     }
-
+console.log('decoded',decoded);
     req.userId = decoded.user_id;
 
     next();

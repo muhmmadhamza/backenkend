@@ -16,6 +16,13 @@ exports.AdDetail = async (req, res) => {
   })
   res.status(200).json(ad);
 };
+exports.DeleteAd = async (req, res) => {
+  let id = req.params.id;
+  const user = await Ad.destroy({
+    where: { ad_id: id }
+  });
+  res.status(200).json(user);
+};
 exports.AdFilter = async (req, res) => {
 console.log({...req.body});
 var condetions = {}

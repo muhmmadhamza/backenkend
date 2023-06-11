@@ -26,6 +26,13 @@ exports.UserDetail = async (req, res) => {
   });
   res.status(200).json(user);
 };
+exports.Deleteuser = async (req, res) => {
+  let id = req.params.id;
+  const user = await User.destroy({
+    where: { user_id: id }
+  });
+  res.status(200).json(user);
+};
 exports.UserUpdate = async (req, res) => {
   // const id = req.params.id;
   const { user_id, ...body } = req.body;

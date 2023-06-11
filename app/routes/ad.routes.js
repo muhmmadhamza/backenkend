@@ -14,6 +14,7 @@ module.exports = function(app) {
   app.get("/api/ad", controller.Allads);
 
   app.get("/api/ad/:id", controller.AdDetail);
+  app.delete("/api/ad/:id", controller.DeleteAd);
   app.put("/api/ad", controller.AdUpdate);
   app.post("/api/ad/filter", controller.AdFilter);
 
